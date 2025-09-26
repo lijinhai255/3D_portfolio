@@ -58,8 +58,8 @@ const Home = () => {
   const [islandScale, islandPosition] = adjustIslandForScreenSize();
 
   // New island position and scale
-  const newIslandPosition = [-31, -18.5, -125];
-  const newIslandScale = [0.28, 0.28, 0.28];
+  const newIslandPosition = [-25, -15, -100];
+  const newIslandScale = [0.4, 0.4, 0.4];
 
   return (
     <section className="w-full h-screen relative">

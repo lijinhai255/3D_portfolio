@@ -1,0 +1,27 @@
+{
+  "fileType": "js",
+  "srcLang": "zh-CN",
+  "distLangs": [
+    "en-US"
+  ],
+  "googleApiKey": "",
+  "baiduApiKey": {
+    "appId": "20250926002464526",
+    "appKey": "FvBkalM2VnVuHlLtNdTR"
+  },
+  "baiduLangMap": {
+    "en-US": "en"
+  },
+  "translateOptions": {
+    "concurrentLimit": 10,
+    "requestOptions": {}
+  },
+  "defaultTranslateKeyApi": "Pinyin",
+  "importI18N": "import I18N from './src/utils/I18N';",
+  "ignoreDir": [
+    "node_modules",
+    "dist",
+    ".git"
+  ],
+  "ignoreFile": []
+}
