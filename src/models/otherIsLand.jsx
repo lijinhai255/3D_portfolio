@@ -24,7 +24,8 @@ export function NewIsland({
   const newIslandRef = useRef();
   // Get access to the Three.js renderer and viewport
   const { gl, viewport } = useThree();
-  const { nodes, materials } = useGLTF(newIslandScene);
+  const { nodes, materials, animations } = useGLTF(newIslandScene);
+  console.log("animations", animations);
 
   // State for zoom control
   const [zoom, setZoom] = useState(1);

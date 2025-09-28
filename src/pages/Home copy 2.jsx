@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import sakura from "../assets/sakura.mp3";
 import { HomeInfo, Loader } from "../components";
 import { soundoff, soundon } from "../assets/icons";
-import { Bird, Island, Plane, Sky } from "../models";
+import { Bird, NewIsland, Plane, Sky } from "../models";
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
@@ -57,6 +57,10 @@ const Home = () => {
   const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
   const [islandScale, islandPosition] = adjustIslandForScreenSize();
 
+  // New island position and scale
+  const newIslandPosition = [-31, -18.5, -125];
+  const newIslandScale = [0.28, 0.28, 0.28];
+
   return (
     <section className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
@@ -70,15 +74,20 @@ const Home = () => {
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
+          {/* 方向光：模拟太阳光，从[1,1,1]方向照射，强度为2 */}
           <directionalLight position={[1, 1, 1]} intensity={2} />
+          {/* 环境光：提供全局基础光照，强度为0.5 */}
           <ambientLight intensity={0.5} />
+          {/* 点光源：位于[10,5,10]的灯泡效果，强度为2 */}
           <pointLight position={[10, 5, 10]} intensity={2} />
+          {/* 聚光灯：从高处照射的锥形光束，角度0.15，边缘柔化，强度为2 */}
           <spotLight
             position={[0, 50, 10]}
             angle={0.15}
             penumbra={1}
             intensity={2}
           />
+          {/* 半球光：模拟天空和地面反射光，天蓝色和黑色，强度为1 */}
           <hemisphereLight
             skyColor="#b1e1ff"
             groundColor="#000000"
@@ -87,13 +96,13 @@ const Home = () => {
 
           <Bird />
           <Sky isRotating={isRotating} />
-          <Island
+          <NewIsland
             isRotating={isRotating}
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
-            position={islandPosition}
+            position={newIslandPosition}
             rotation={[0.1, 4.7077, 0]}
-            scale={islandScale}
+            scale={newIslandScale}
           />
           <Plane
             isRotating={isRotating}
